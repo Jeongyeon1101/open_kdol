@@ -11,7 +11,30 @@
   </head>
 
   <body>
-    <header></header>
+    <header>
+      <% if admin_signed_in? %> <!--adminとend_userのヘッダー条件分岐 -->
+        <% if request.fullpath.include? "/admin" %>
+        <% else %>
+        <% end %>
+        <li>
+          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% elsif end_user_signed_in? %>
+        <li>
+          <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
+        </li>
+        <li>
+          <%= link_to "退会する", end_users_confirm_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "会員新規登録", new_end_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "会員ログイン", new_end_user_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

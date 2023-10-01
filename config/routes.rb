@@ -15,4 +15,10 @@ Rails.application.routes.draw do
    root to: 'homes#top'
   end
 
+  scope module: :end_user do
+   root to: 'homes#top'
+   get 'end_users/confirm'
+   patch 'end_users/withdraw'
+   resources :end_users, only: [:show, :edit, :update, :destroy]
+  end
 end

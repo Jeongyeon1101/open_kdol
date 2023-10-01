@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       admin_root_path
-    when Customer
-      root_path
+    when EndUser
+      end_user_path(current_end_user.id)
     end
   end
 
@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
     case resource
     when :admin
       new_admin_session_path
-    when :customer
+    when :end_user
       root_path
     end
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :introduction])
   end
 end
