@@ -1,0 +1,6 @@
+<h1>投稿詳細</h1>
+<%= image_tag @post_content.end_user.get_profile_image(100,100) %><br>
+<%= @post_content.text %><br>
+
+<%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
+<%= link_to "編集する", edit_post_content_path(@post_content) %>

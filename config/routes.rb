@@ -20,5 +20,6 @@ Rails.application.routes.draw do
    get 'end_users/confirm'
    patch 'end_users/withdraw'
    resources :end_users, only: [:show, :edit, :update, :destroy]
+   resources :post_contents, only: [:new, :create, :index, :show, :edit, :update, :destroy ]
   end
 end

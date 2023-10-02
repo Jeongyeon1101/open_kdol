@@ -1,0 +1,9 @@
+<h1>投稿作成</h1>
+<%= form_with model: @post_content do |f| %>
+  <label for="post_text"></label>
+  <%= f.text_field :text, id: "post_text" %><br>
+  <label for="post_image"></label>
+  <%= f.file_field :image, id:"post_image", accept: "image/*" %><br>
+  <%= f.submit "投稿する" %><br>
+<% end %>
+
