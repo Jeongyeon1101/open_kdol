@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     registrations: "end_user/registrations",
     sessions: "end_user/sessions"
   }
-  # ユーザ用devise
+  # エンドユーザ用devise
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
    get 'end_users/confirm'
    patch 'end_users/withdraw'
    resources :end_users, only: [:show, :edit, :update, :destroy]
-   resources :post_contents, only: [:new, :create, :index, :show, :edit, :update, :destroy ]
+   resources :post_contents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+     resource :likes, only: [:create, :destroy]
+   end
   end
 end
+
+

@@ -17,9 +17,21 @@
         <% else %>
         <% end %>
         <li>
+          <%= form_with url: admin_end_users_path, method: :get do |f| %>
+            <%= f.text_field :search, placeholder:"Search" %>
+            <%= button_tag type: "submit" %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
       <% elsif end_user_signed_in? %>
+        <li>
+          <%= form_with url: post_contents_path, method: :get do |f| %>
+            <%= f.text_field :search, placeholder:"Search" %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </li>
         <li>
           <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
         </li>

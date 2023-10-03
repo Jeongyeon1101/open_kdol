@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_contents, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
@@ -15,3 +16,4 @@ class EndUser < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 end
+# プロフィール画像を設定していない場合にデフォルトでno_imageが表示される

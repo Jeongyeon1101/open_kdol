@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2023_10_02_140606) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "post_id", null: false
+    t.integer "post_content_id", null: false
     t.text "comment", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_10_02_140606) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "post_id", null: false
+    t.integer "post_content_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2023_10_02_140606) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visited_id", null: false
     t.integer "visitor_id", null: false
-    t.integer "post_id"
+    t.integer "post_con_id"
     t.integer "comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2023_10_02_140606) do
 
   create_table "reposts", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "post_id", null: false
+    t.integer "post_content_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,2 @@
+module EndUser::LikesHelper
+end

@@ -5,7 +5,10 @@
     <%= image_tag post_content.end_user.get_profile_image(100,100) %><br>
   <% end %>
   <%= link_to post_content_path(post_content.id) do %><br>
-
+    <% if post_content.image.attached? %>
+      <%= image_tag post_content.get_image(200,200) %>
+    <% else %>
+    <% end %>
     <%= post_content.text %>
   <% end %>
 <% end %>

@@ -4,7 +4,12 @@ class EndUser::PostContentsController < ApplicationController
   end
 
   def index
-    @post_contents = PostContent.all
+    if params[:search]
+      @post_contents = PostContent.where("text LIKE ? ", '%' + params[:search] + '%')
+      # 投稿検索
+    else
+      @post_contents = PostContent.all
+    end
   end
 
   def create

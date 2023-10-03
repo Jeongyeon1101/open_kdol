@@ -4,3 +4,13 @@
 
 <%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
 <%= link_to "編集する", edit_post_content_path(@post_content) %>
+
+<% if @post_content.liked_by?(current_end_user) %>
+  <%= link_to post_content_likes_path(@post_content), method: :delete do %>
+    ♥<%= @post_content.likes.count %>いいね
+  <% end %>
+<% else %>
+  <%= link_to post_content_likes_path(@post_content), method: :post do %>
+    ♡<%= @post_content.likes.count %>いいね
+  <% end %>
+<% end %>
