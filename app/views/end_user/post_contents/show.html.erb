@@ -14,3 +14,16 @@
     ♡<%= @post_content.likes.count %>いいね
   <% end %>
 <% end %>
+
+<%= @post_content.comments.count %>件のコメント<br>
+<% @post_content.comments.each do |comment| %>
+  <%= image_tag comment.end_user.get_profile_image(50,50) %><br>
+  <%= comment.end_user.name %><br>
+  <%= comment.comment %><br>
+  <%= link_to "削除", post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？" %>
+<% end %>
+
+<%= form_with model: [@post_content, @comment] do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "返信する" %>
+  <%= f.submit "送信" %>
+<% end %>

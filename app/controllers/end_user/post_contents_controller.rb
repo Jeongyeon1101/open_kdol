@@ -21,6 +21,7 @@ class EndUser::PostContentsController < ApplicationController
 
   def show
     @post_content = PostContent.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

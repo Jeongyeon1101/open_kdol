@@ -1,6 +1,7 @@
 class PostContent< ApplicationRecord
   belongs_to :end_user
   has_one_attached :image
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   def liked_by?(end_user)
