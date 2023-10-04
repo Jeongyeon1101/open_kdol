@@ -1,4 +1,11 @@
 class EndUser::EndUsersController < ApplicationController
+  before_action :set_end_user, only: [:likes]
+
+  def likes
+    likes = Like.where(end_user_id: @end_user.id).pluck(:post_content_id)
+    @like_post_contents = PostContent.find(likes)
+  end
+
   def show
     @end_user = EndUser.find(params[:id])
   end
@@ -22,6 +29,10 @@ class EndUser::EndUsersController < ApplicationController
   end
 
   private
+
+  def set_end_user
+    @end_user = EndUser.find(params[:id])
+  end
 
   def end_user_params
     params.require(:end_user).permit(:profile_image, :name, :introduction, :is_active)

@@ -4,6 +4,9 @@
 
 <%= @end_user.post_contents.count %>件の投稿<br>
 
+<%= link_to "いいね", likes_end_user_path(@end_user) %><br>
+
 <%= @end_user.introduction %><br>
 <%= image_tag @end_user.get_profile_image(100,100) %><br>
 <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user) %>
+
