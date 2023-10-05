@@ -5,8 +5,8 @@ class EndUser::PostContentsController < ApplicationController
 
   def index
     if params[:search]
-      @post_contents = PostContent.where("text LIKE ? ", '%' + params[:search] + '%')
-      # 投稿検索
+      @search_contents = PostContent.where("text LIKE ? ", '%' + params[:search] + '%').or(EndUser.where("name LIKE ? ", '%' + params[:search] + '%'))
+      # 投稿orユーザ検索
     else
       @post_contents = PostContent.all
     end

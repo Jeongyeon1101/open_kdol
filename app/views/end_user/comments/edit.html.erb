@@ -1,0 +1,7 @@
+<h1>コメント編集</h1>
+
+<%= form_with model: [@post_content, @comment] do |f| %>
+  <%= f.text_area :comment, rows: '5' %>
+  <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
+  <%= f.submit "保存" %>
+<% end %>

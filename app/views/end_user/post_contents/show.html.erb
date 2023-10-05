@@ -1,9 +1,10 @@
 <h1>投稿詳細</h1>
 <%= image_tag @post_content.end_user.get_profile_image(100,100) %><br>
+<%= @post_content.end_user.name %><br>
 <%= @post_content.text %><br>
 
 <%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
-<%= link_to "編集する", edit_post_content_path(@post_content) %>
+<%= link_to "編集する", edit_post_content_path(@post_content) %><br>
 
 <% if @post_content.liked_by?(current_end_user) %>
   <%= link_to post_content_likes_path(@post_content), method: :delete do %>
@@ -21,9 +22,11 @@
   <%= comment.end_user.name %><br>
   <%= comment.comment %><br>
   <%= link_to "削除", post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？" %>
+  <%= link_to "編集", edit_post_content_comment_path(comment.post_content, comment) %>
 <% end %>
 
 <%= form_with model: [@post_content, @comment] do |f| %>
-  <%= f.text_area :comment, rows: '5', placeholder: "返信する" %>
+  <%= f.text_area :comment, rows: '5', placeholder: "返信する" %><br>
+  <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
   <%= f.submit "送信" %>
 <% end %>
