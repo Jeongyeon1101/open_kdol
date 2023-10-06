@@ -17,9 +17,9 @@
         <% else %>
         <% end %>
         <li>
-          <%= form_with url: admin_end_users_path, method: :get do |f| %>
+          <%= form_with url: admin_root_path, method: :get do |f| %>
             <%= f.text_field :search, placeholder:"Search" %>
-            <%= button_tag type: "submit" %>
+            <%= f.submit "ユーザを検索" %>
           <% end %>
         </li>
         <li>
