@@ -28,8 +28,14 @@
       <% elsif end_user_signed_in? %>
         <li>
           <%= form_with url: post_contents_path, method: :get do |f| %>
-            <%= f.text_field :search, placeholder:"Search" %>
-            <%= f.submit "検索" %>
+            <%= f.text_field :search_post_contents, placeholder:"Search" %>
+            <%= f.submit "投稿を検索" %>
+          <% end %>
+        </li>
+        <li>
+          <%= form_with url: end_users_path, method: :get do |f| %>
+            <%= f.text_field :search_end_users, placeholder:"Search" %>
+            <%= f.submit "ユーザを検索" %>
           <% end %>
         </li>
         <li>

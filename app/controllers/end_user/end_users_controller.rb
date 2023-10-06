@@ -6,6 +6,14 @@ class EndUser::EndUsersController < ApplicationController
     @like_post_contents = PostContent.find(likes)
   end
 
+  def index
+    if params[:search_end_users]
+      @end_users = EndUser.where("name LIKE ? ", '%' + params[:search_end_users] + '%')
+    else
+      @end_users = EndUser.all
+    end
+  end
+
   def show
     @end_user = EndUser.find(params[:id])
   end

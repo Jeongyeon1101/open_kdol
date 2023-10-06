@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :end_user do
+    get 'searches/search'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
    root to: 'homes#top'
    get 'end_users/confirm'
    patch 'end_users/withdraw'
-   resources :end_users, only: [:show, :edit, :update, :destroy] do
+   resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
      member do
        get :likes
      end
