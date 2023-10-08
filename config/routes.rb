@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
    root to: 'homes#top'
-   resources :end_users, only: [:show]
+   resources :end_users, only: [:show, :edit, :update]
   end
 
   scope module: :end_user do
@@ -24,6 +24,10 @@ Rails.application.routes.draw do
    get 'end_users/confirm'
    patch 'end_users/withdraw'
    resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
+     resource :follows, only: [:create, :destroy]
+  	 get "followings" => "follows#followings", as: "followings"
+  	 get "followers" => "follows#followers", as: "followers"
+
      member do
        get :likes
      end

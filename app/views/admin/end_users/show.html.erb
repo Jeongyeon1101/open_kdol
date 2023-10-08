@@ -1,1 +1,14 @@
 <h1>管理者会員詳細</h1>
+
+<%= image_tag @end_user.get_profile_image(100,100) %>
+<%= @end_user.name %><br>
+会員ID <%= @end_user.id %><br>
+メールアドレス <%= @end_user.email %><br>
+会員ステータス
+<% if @end_user.is_active %>
+  有効
+<% else %>
+  退会
+<% end %><br>
+
+<%= link_to "編集する", edit_admin_end_user_path(@end_user) %>

@@ -1,0 +1,16 @@
+<h1>管理者会員編集</h1>
+
+<%= form_with model: @end_user do |f| %>
+  会員ID <%= @end_user.id %><br>
+  <%= f.label :ユーザ名 %>
+  <%= f.text_field :name %><br>
+  <%= f.label :メールアドレス %>
+  <%= f.text_field :email %><br>
+  <%= f.label :会員ステータス %><br>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active_true, "有効" %><br>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active_false, "退会" %><br>
+  <%= f.submit "保存" %>
+<% end %>
+

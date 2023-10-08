@@ -8,5 +8,7 @@
 
 <%= @end_user.introduction %><br>
 <%= image_tag @end_user.get_profile_image(100,100) %><br>
-<%= link_to "プロフィールを編集する", edit_end_user_path(@end_user) %>
+<%= if current_end_user != end_user %>
+  <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user) %>
+<% end %>
 
