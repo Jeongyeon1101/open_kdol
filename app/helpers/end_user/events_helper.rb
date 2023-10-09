@@ -1,0 +1,2 @@
+module EndUser::EventsHelper
+end
