@@ -1,6 +1,6 @@
 <h1>管理者会員編集</h1>
 
-<%= form_with model: @end_user do |f| %>
+<%= form_with model: @end_user, url: admin_end_user_path(@end_user.id) do |f| %>
   会員ID <%= @end_user.id %><br>
   <%= f.label :ユーザ名 %>
   <%= f.text_field :name %><br>

@@ -8,7 +8,14 @@
 
 <%= @end_user.introduction %><br>
 <%= image_tag @end_user.get_profile_image(100,100) %><br>
-<%= if current_end_user != end_user %>
+
+<p>フォロー</p>
+<%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %>
+<p>フォロワー</p>
+<%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %><br>
+
+<% if current_end_user != @end_user %>
+  <%= render 'end_user/follows/btn', end_user: @end_user, options: { class: ""} %>
+<% else %>
   <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user) %>
 <% end %>
-
