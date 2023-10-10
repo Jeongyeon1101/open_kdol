@@ -8,11 +8,17 @@ class EndUser < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one_attached :profile_image
-
+  #以下通知機能
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  #自分->相手
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  #相手->自分
+  
+  #以下フォロー機能
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
-  #1(本人):N(本人がフォローしているユーザ)
+  #自分->相手 1(本人):N(本人がフォローしているユーザ)
   has_many :passive_follows, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
-  #1(本人):N(本人がフォローされているユーザ)
+  #相手->自分 1(本人):N(本人がフォローされているユーザ)
   has_many :followings, through: :active_follows, source: :followee
   #本人がフォローしているユーザ(followee)
   has_many :followers, through: :passive_follows, source: :follower
