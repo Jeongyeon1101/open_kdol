@@ -48,6 +48,9 @@
           <%= link_to "プロフィール", end_user_path(current_end_user.id) %>
         </li>
         <li>
+          <%= link_to "イベントカレンダー", events_path %>
+        </li>
+        <li>
           <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
         </li>
         <li>
