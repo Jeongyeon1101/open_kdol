@@ -2,11 +2,15 @@ class EndUser::CommentsController < ApplicationController
   before_action :authenticate_end_user!
 
   def create
-    post_content = PostContent.find(params[:post_content_id])
-    comment = current_end_user.comments.new(comment_params)
-    comment.post_content_id = post_content.id
-    comment.save
-    redirect_to post_content_path(post_content)
+    @post_content = PostContent.find(params[:post_content_id])
+    @comment = current_end_user.comments.new(comment_params)
+    @comment.post_content_id = post_content.id
+    if @comment.save
+      @post_content.create_notification_comment!(current_end_user, comment_id)
+      redirect_to post_content_path(post_content)
+    else  
+      render 'end_user/post_contents/show'
+    end  
   end
 
   def edit

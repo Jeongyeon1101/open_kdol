@@ -13,7 +13,7 @@ class EndUser < ApplicationRecord
   #自分->相手
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   #相手->自分
-  
+
   #以下フォロー機能
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   #自分->相手 1(本人):N(本人がフォローしているユーザ)
@@ -36,7 +36,17 @@ class EndUser < ApplicationRecord
   end
   #end_user.idのユーザをフォローしているか確認する
 
-
+  #フォロー通知
+  def create_notification_follow!(current_end_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_end_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_end_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?
