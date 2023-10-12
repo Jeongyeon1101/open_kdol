@@ -16,6 +16,7 @@ class EndUser::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
+    @random_message = Message.offset( rand(Message.count) ).first
   end
 
   def edit

@@ -7,6 +7,7 @@ class EndUser < ApplicationRecord
   has_many :post_contents, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :profile_image
   #以下通知機能
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy

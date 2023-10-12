@@ -38,6 +38,7 @@ Rails.application.routes.draw do
    end
    resources :notifications, only: :index
    resources :events, only: [:index, :create, :show, :edit, :update, :destroy]
+   resources :messages, only: [:index, :create, :edit, :update, :destroy]
   end
 end
 
