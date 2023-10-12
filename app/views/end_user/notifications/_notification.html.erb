@@ -1,26 +1,29 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-  <span>
-    <%= link_to end_user_path(visitor) do %>
-      <%= image_tag end_user_url(visitor).get_profile_image(100,100) %>
-      <strong><%= visitor.name %></strong>'さんが'
-  </span>
-<% case notification.action %>
-  <% when 'follow' then %>
-    <%= "あなたをフォローしました" %>
-  <% when 'like' then %>
-    <%= link_to 'あなたの投稿', notification.post_content %>
-    <%= "にいいねしました" %>
-  <% when 'comment' then %>
-    <% if notification.post_content.end_user_id == visited.id %>
-      <%= link_to "あなたの投稿", notification.post_content %>
-    <% else %>
-      <span>
-        <%= link_to post_content_path(notification.post_content) do %>
-          <%= image_tag end_user_url(notification.post_content.end_user) %>
-          <strong><%= notification.post_content.end_user.name + 'さんの投稿' %></strong>
-          <%= "にコメントしました" %>
-      </span>
-    <%= Comment.find_by(id: notification.comment_id)&.comment %>
-    <%= time_ago_in_words(notification.created_at).upcase %>
-
+<span>
+  <%= link_to end_user_path(visitor) do %>
+    <%= image_tag visitor.get_profile_image(100,100) %>
+    <strong><%= visitor.name %></strong>'さんが'
+</span>
+    <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'like' then %>
+        <%= link_to 'あなたの投稿', notification.post_content %>
+        <%= "にいいねしました" %>
+      <% when 'comment' then %>
+        <% if notification.post_content.end_user_id == visited.id %>
+          <%= link_to "あなたの投稿", notification.post_content %>
+        <% else %>
+          <span>
+            <%= link_to post_content_path(notification.post_content) do %>
+              <%= image_tag end_user_url(notification.post_content.end_user) %>
+              <strong><%= notification.post_content.end_user.name + 'さんの投稿' %></strong>
+              <%= "にコメントしました" %>
+            <% end %>
+          </span>
+        <% end %>
+        <%= Comment.find_by(id: notification.comment_id)&.comment %>
+        <%= time_ago_in_words(notification.created_at).upcase %>
+    <% end %>
+  <% end %>

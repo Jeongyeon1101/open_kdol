@@ -12,10 +12,9 @@ class PostContent< ApplicationRecord
   def get_image(width,height)
     image.variant(resize_to_limit: [width, height]).processed
   end
-end
 
-#以下通知機能
-#いいね通知
+  #以下通知機能
+  #いいね通知
   def create_notification_like(current_end_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_content_id = ? and action = ? ", current_end_user.id, end_user_id, id, 'like'])
@@ -33,7 +32,8 @@ end
       notification.save if notification.valid?
     end
   end
-#コメント通知
+
+  #コメント通知
   def create_notification_comment!(current_end_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Comment.select(:end_user_id).where(post_content_id: id).where.not(end_user_id: current_end_user.id).distinct
@@ -58,3 +58,7 @@ end
     end
     notification.save if notification.valid?
   end
+end
+
+
+
