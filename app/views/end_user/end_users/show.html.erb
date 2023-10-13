@@ -7,9 +7,8 @@
 <%= link_to "いいね", likes_end_user_path(@end_user) %><br>
 
 
-<%= @random_message.message %>
 
-<%= link_to "メッセージ", messages_path %>
+<%= link_to "メッセージ", messages_path %><br>
 
 <%= @end_user.introduction %><br>
 <%= image_tag @end_user.get_profile_image(100,100) %><br>

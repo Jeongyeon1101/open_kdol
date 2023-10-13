@@ -1,0 +1,9 @@
+<h2>メッセージ編集</h2>
+
+<%= form_with model: @message, url: message_path(@message) do |f| %>
+  <label for="message_idol">推し</label>
+  <%= f.text_field :idol, id: "message_idol" %><br>
+  <label for="message_text">メッセージ</label>
+  <%= f.text_field :message, id: "message_text" %><br>
+  <%= f.submit "保存" %><br>
+<% end %>

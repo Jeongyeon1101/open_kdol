@@ -6,6 +6,7 @@ class EndUser::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.end_user_id = current_end_user.id
     @message.save!
     redirect_to messages_path
   end
@@ -17,7 +18,7 @@ class EndUser::MessagesController < ApplicationController
   def update
     message = Message.find(params[:id])
     message.update(message_params)
-    redirect_to message_path(message.id)
+    redirect_to messages_path
   end
 
   def destroy
@@ -29,6 +30,6 @@ class EndUser::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:text)
+    params.require(:message).permit(:message, :idol)
   end
 end

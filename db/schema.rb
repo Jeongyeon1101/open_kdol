@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2023_10_12_140201) do
   create_table "messages", force: :cascade do |t|
     t.integer "end_user_id", null: false
     t.text "message", default: "", null: false
+    t.string "idol", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
