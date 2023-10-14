@@ -15,6 +15,8 @@ class EndUser::EndUsersController < ApplicationController
   end
 
   def show
+    @random_message = Message.offset( rand(Message.count) ).first
+    #登録したmessageからランダムに一件取得する
     @end_user = EndUser.find(params[:id])
   end
 
