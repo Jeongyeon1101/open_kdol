@@ -2,7 +2,7 @@ class EndUser::FollowsController < ApplicationController
   before_action :authenticate_end_user!
   def create
     @end_user = EndUser.find(params[:end_user_id])
-    current_end_user.follow(end_user)
+    current_end_user.follow(@end_user)
     @end_user.create_notification_follow!(current_end_user)
     redirect_to request.referer
   end

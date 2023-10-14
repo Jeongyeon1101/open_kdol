@@ -32,6 +32,7 @@ Rails.application.routes.draw do
        get :likes
      end
    end
+   resources :timeline, only: :index
    resources :post_contents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
      resources :comments, only: [:create, :edit, :update, :destroy]
      resource :likes, only: [:create, :destroy]

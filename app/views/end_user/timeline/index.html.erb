@@ -1,0 +1,14 @@
+<h1>タイムライン</h1>
+<% @post_contents.each do |post_content| %>
+  <%= link_to end_user_path(post_content.end_user.id) do %>
+    <%= image_tag post_content.end_user.get_profile_image(100,100) %><br>
+    <%= post_content.end_user.name %><br>
+  <% end %>
+  <%= link_to post_content_path(post_content.id) do %>
+    <%= post_content.text %><br>
+    <% if post_content.image.attached? %>
+      <%= image_tag post_content.get_image(200,200) %><br>
+    <% else %>
+    <% end %>
+  <% end %>
+<% end %>
