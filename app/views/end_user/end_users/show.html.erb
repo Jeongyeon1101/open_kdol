@@ -7,7 +7,7 @@
     <div class="col-lg-5">
       <ul class="list-unstyled">
         <li>
-          <%= @end_user.name %>
+          <h5><%= @end_user.name %></h5>
         </li>
         <li>
           <%= @end_user.post_contents.count %>件の投稿
@@ -29,7 +29,7 @@
       </ul>
     </div>
     <div class="col-lg-4">
-      <ul class="list_unstyled">
+      <ul class="list-unstyled">
         <% if @end_user == current_end_user %>
         <li>
           <%= @random_message.idol %>
