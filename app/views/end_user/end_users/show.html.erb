@@ -1,27 +1,58 @@
-<h1>ユーザ詳細(マイページ)</h1>
-
-<%= @end_user.name %><br>
-
-<%= @end_user.post_contents.count %>件の投稿<br>
-
-<%= link_to "いいね", likes_end_user_path(@end_user) %><br>
-
-
-<%= @random_message.idol %>
-<%= @random_message.message %><br>
-
-<%= link_to "メッセージ", messages_path %><br>
-
-<%= @end_user.introduction %><br>
-<%= image_tag @end_user.get_profile_image(100,100) %><br>
-
-<p>フォロー</p>
-<%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %>
-<p>フォロワー</p>
-<%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %><br>
-
-<% if current_end_user != @end_user %>
-  <%= render 'end_user/follows/btn', end_user: @end_user, options: { class: ""} %>
-<% else %>
-  <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user) %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <h2>ユーザ詳細(マイページ)</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-5">
+      <ul class="list-unstyled">
+        <li>
+          <%= @end_user.name %>
+        </li>
+        <li>
+          <%= @end_user.post_contents.count %>件の投稿
+        </li>
+      </ul>
+      <div class="plofile-image">
+        <%= image_tag @end_user.get_profile_image(100,100) %>
+      </div>
+      <ul class="list-unstyled">
+        <li>
+          <%= @end_user.introduction %>
+        </li>
+        <li>
+          <p>フォロー</p>
+          <%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %>
+          <p>フォロワー</p>
+          <%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-4">
+      <ul class="list_unstyled">
+        <% if @end_user == current_end_user %>
+        <li>
+          <%= @random_message.idol %>
+        </li>
+        <li>
+          <%= @random_message.message %>
+        </li>
+        <% else %>
+        <% end %>
+        <li>
+          <%= link_to "メッセージ", messages_path %>
+        </li>
+        <li>
+          <% if current_end_user != @end_user %>
+            <%= render 'end_user/follows/btn', end_user: @end_user, options: { class: ""} %>
+          <% else %>
+            <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user), class: "btn btn btn-primary" %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-3 col-sm-4 mx-auto">
+    <%= link_to "いいね", likes_end_user_path(@end_user) %>
+  </div>
+</div>
