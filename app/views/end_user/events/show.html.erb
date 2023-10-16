@@ -1,21 +1,33 @@
-<p id="notice"><%= notice %></p>
-<div class="show">
-  <p>
-    <strong>タイトル</strong>
-    <%= @event.title %>
-  </p>
-
-  <p>
-    <strong>内容</strong>
-    <%= @event.content %>
-  </p>
-
-  <p>
-    <strong>日時</strong>
-    <%= @event.start_time.strftime("%m-%d") %>
-  </p>
-
-  <%= link_to '編集', edit_event_path(@event) %>
-  <%= link_to '消去',event_path(@event.id), method: :delete, data: { confirm: '本当に消去しますか?' } %>
-  <%= link_to '戻る', events_path %>
+<div class="container">
+  <div class="row mt-3">
+    <p id="notice"><%= notice %></p>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-6">
+      <div class="show">
+        <ul class="list-unstyled">
+          <li>
+            <strong>タイトル</strong>
+            <%= @event.title %>
+          </li>
+          <li>
+            <strong>内容</strong>
+            <%= @event.content %>
+          </li>
+          <li>
+            <strong>日時</strong>
+            <%= @event.start_time.strftime("%m-%d") %>
+          </li>
+          <li>
+            <%= link_to '編集', edit_event_path(@event), class: "btn btn btn-success" %>
+            <%= link_to '消去',event_path(@event.id), method: :delete, data: { confirm: '本当に消去しますか?' }, class: "btn btn btn-danger" %>
+            <%= link_to '戻る', events_path, class: "btn btn btn-primary" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

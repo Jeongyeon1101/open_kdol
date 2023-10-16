@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-6">
+      <div class="row mt-5">
+        <h2>ユーザ一覧</h2>
+      </div>
+    <% end_users.each do |end_user| %>
+      <div class="row mt-5">
+      <%= link_to end_user_path(end_user.id) do %>
+        <ul class="list-unstyled">
+          <li>
+            <%= image_tag end_user.get_profile_image(50,50) %>
+            <%= end_user.name %>
+          </li>
+          <li>
+            <%= end_user.introduction %>
+          </li>
+        </ul>
+      <% end %>
+      </div>
+    <% end %>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

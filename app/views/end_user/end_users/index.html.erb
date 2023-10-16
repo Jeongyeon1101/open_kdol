@@ -1,9 +1,0 @@
-<h1>ユーザ一覧</h1>
-
-<% @end_users.each do |end_user| %>
-  <%= link_to end_user_path(end_user.id) do %>
-    <%= image_tag end_user.get_profile_image(50,50) %>
-    <%= end_user.name %><br>
-    <%= end_user.introduction %><br>
-  <% end %>
-<% end %>

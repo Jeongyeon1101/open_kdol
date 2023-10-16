@@ -1,7 +1,7 @@
 <% if current_end_user != end_user %>
   <% if current_end_user.following?(end_user) %><!--ログイン中のユーザが表示されているユーザをフォローしているか -->
-    <%= link_to "フォロー中", end_user_follows_path(end_user.id), method: :delete, class: options[:class].presence || "btn btn-info" %>
+    <%= link_to "フォロー中", end_user_follows_path(end_user.id), method: :delete, class: options[:class].presence || "btn btn-secondary" %>
   <% else %>
-    <%= link_to "フォローする", end_user_follows_path(end_user.id), method: :post, class: options[:class].presence || "btn btn-success" %>
+    <%= link_to "フォローする", end_user_follows_path(end_user.id), method: :post, class: options[:class].presence || "btn btn-primary" %>
   <% end %>
 <% end %>
