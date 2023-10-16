@@ -14,6 +14,7 @@
 
   <body class="d-flex flex-column vh-100">
     <header>
+      <ul class="list-unstyled">
       <% if admin_signed_in? %> <!--adminとend_userのヘッダー条件分岐 -->
         <% if request.fullpath.include? "/admin" %>
         <% else %>
@@ -43,27 +44,6 @@
             <%= f.submit "ユーザを検索" %>
           <% end %>
         </li>
-        <li>
-          <%= link_to "ホーム", timeline_index_path %>
-        </li>
-        <li>
-          <%= link_to "プロフィール", end_user_path(current_end_user.id) %>
-        </li>
-        <li>
-          <%= link_to "通知", notifications_path %>
-        </li>
-        <li>
-          <%= link_to "イベントカレンダー", events_path %>
-        </li>
-        <li>
-          <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
-        </li>
-        <li>
-          <%= link_to "退会する", end_users_confirm_path %>
-        </li>
-        <li>
-          <%= link_to "投稿する", new_post_content_path %>
-        </li>
       <% else %>
         <li>
           <%= link_to "会員新規登録", new_end_user_registration_path %>
@@ -72,6 +52,7 @@
           <%= link_to "会員ログイン", new_end_user_session_path %>
         </li>
       <% end %>
+      </ul>
     </header>
     <%= yield %>
   </body>

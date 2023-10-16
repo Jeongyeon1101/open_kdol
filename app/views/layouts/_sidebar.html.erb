@@ -1,0 +1,23 @@
+<ul class="list-unstyled">
+  <li>
+    <%= link_to "ホーム", timeline_index_path %>
+  </li>
+  <li>
+    <%= link_to "プロフィール", end_user_path(current_end_user.id) %>
+  </li>
+  <li>
+    <%= link_to "通知", notifications_path %>
+  </li>
+  <li>
+    <%= link_to "イベントカレンダー", events_path %>
+  </li>
+  <li>
+    <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
+  </li>
+  <li>
+    <%= link_to "退会する", end_users_confirm_path %>
+  </li>
+  <li>
+    <%= link_to "投稿する", new_post_content_path %>
+  </li>
+</ul>

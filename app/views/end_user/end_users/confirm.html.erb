@@ -1,4 +1,22 @@
-<h1>退会確認</h1>
-本当に退会しますか?
-<%= link_to "退会しない", end_user_path(current_end_user.id) %>
-<%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4">
+      <div class="row mt-5 mx-auto">
+        <h1>退会確認</h1>
+      </div>
+      <div class="row mt-5 mx-auto">
+        <h2>本当に退会しますか?</h2>
+        <h5 class="row mt-5 mx-auto">
+          <%= link_to "退会しない", end_user_path(current_end_user.id), class: "btn btn-lg btn-primary mr-5" %>
+          <%= link_to "退会する", end_users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-lg btn-danger mr-5" %>
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>
