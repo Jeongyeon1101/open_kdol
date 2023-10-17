@@ -1,32 +1,74 @@
-<h1>投稿詳細</h1>
-<%= image_tag @post_content.end_user.get_profile_image(100,100) %><br>
-<%= @post_content.end_user.name %><br>
-<%= @post_content.text %><br>
-
-<%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
-<%= link_to "編集する", edit_post_content_path(@post_content) %><br>
-
-<% if @post_content.liked_by?(current_end_user) %>
-  <%= link_to post_content_likes_path(@post_content), method: :delete do %>
-    ♥<%= @post_content.likes.count %>いいね
-  <% end %>
-<% else %>
-  <%= link_to post_content_likes_path(@post_content), method: :post do %>
-    ♡<%= @post_content.likes.count %>いいね
-  <% end %>
-<% end %>
-
-<%= @post_content.comments.count %>件のコメント<br>
-<% @post_content.comments.each do |comment| %>
-  <%= image_tag comment.end_user.get_profile_image(50,50) %><br>
-  <%= comment.end_user.name %><br>
-  <%= comment.comment %><br>
-  <%= link_to "削除", post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？" %>
-  <%= link_to "編集", edit_post_content_comment_path(comment.post_content, comment) %>
-<% end %>
-
-<%= form_with model: [@post_content, @comment] do |f| %>
-  <%= f.text_area :comment, rows: '5', placeholder: "返信する" %><br>
-  <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
-  <%= f.submit "送信" %>
-<% end %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-6">
+      <div class="row mt-5">
+        <h2>投稿詳細</h2>
+      </div>
+      <div class="row mt-5">
+        <ul class="list-unstyled">
+          <li>
+            <%= image_tag @post_content.end_user.get_profile_image(50,50) %>
+            <%= @post_content.end_user.name %>
+          </li>
+        </ul>
+      </div>
+      <div class="row mt-3">
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
+            <%= link_to "編集する", edit_post_content_path(@post_content) %><br>
+          </li>
+        </ul>
+      </div>
+      <div class="row mt-3">
+        <%= @post_content.text %><br>
+        <% if @post_content.image.attached? %>
+          <%= image_tag @post_content.get_image(200,200) %><br>
+        <% else %>
+        <% end %>
+      </div>
+      <% if @post_content.liked_by?(current_end_user) %>
+      <div class="row mt-3">
+        <%= link_to post_content_likes_path(@post_content), method: :delete do %>
+          ♥<%= @post_content.likes.count %>いいね
+        <% end %>
+      <% else %>
+        <%= link_to post_content_likes_path(@post_content), method: :post do %>
+          ♡<%= @post_content.likes.count %>いいね
+        <% end %>
+      </div>
+      <% end %>
+        <div class="ml-5">
+        <%= @post_content.comments.count %>件のコメント<br>
+        </div>
+      <div class="row mt-5">
+        <ul class="list-unstyled">
+        <% @post_content.comments.each do |comment| %>
+          <li>
+            <%= image_tag comment.end_user.get_profile_image(50,50) %>
+            <%= comment.end_user.name %>
+          </li>
+          <li>
+            <%= link_to "削除", post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？" %>
+            <%= link_to "編集", edit_post_content_comment_path(comment.post_content, comment) %>
+          </li>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="row mt-5 ">
+        <%= form_with model: [@post_content, @comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "返信する" %><br>
+          <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
+          <%= f.submit "送信", class: "btn btn-sm btn-primary mt-3" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

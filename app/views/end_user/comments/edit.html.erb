@@ -1,7 +1,19 @@
-<h1>コメント編集</h1>
-
-<%= form_with model: [@post_content, @comment] do |f| %>
-  <%= f.text_area :comment, rows: '5' %>
-  <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
-  <%= f.submit "保存" %>
-<% end %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-6">
+      <div class="row mt-5">
+        <h2>コメント編集</h2>
+      </div>
+    <%= form_with model: [@post_content, @comment] do |f| %>
+      <div class="row mt-5">
+        <%= f.text_area :comment, rows: '5' %><br>
+        <%= f.file_field :image, id:"comment_image", accept: "image/*" %><br>
+        <%= f.submit "保存", class: "btn btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -38,13 +38,13 @@
         <li>
           <%= link_to "会員ログイン", new_end_user_session_path %>
         </li>
-        <li>
+        <li class="float-right">
           <%= form_with url: post_contents_path, method: :get do |f| %>
             <%= f.text_field :search_post_contents, placeholder:"Search" %>
             <%= f.submit "投稿を検索" %>
           <% end %>
         </li>
-        <li>
+        <li class="float-right mr-5">
           <%= form_with url: end_users_path, method: :get do |f| %>
             <%= f.text_field :search_end_users, placeholder:"Search" %>
             <%= f.submit "ユーザを検索" %>
