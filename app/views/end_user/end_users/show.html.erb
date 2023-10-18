@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-lg-3">
+    <div class="col-lg-3 pr-5 border-right">
       <%= render 'layouts/sidebar' %>
     </div>
     <div class="col-lg-5">
@@ -13,15 +13,15 @@
         </li>
       </ul>
       <div class="plofile-image">
-        <%= image_tag @end_user.get_profile_image(100,100) %>
+        <%= image_tag @end_user.get_profile_image(70,70), style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
       </div>
       <ul class="list-unstyled">
         <li>
-          <%= @end_user.introduction %>
+          フォロー<%= link_to @end_user.followings.count, end_user_followings_path(@end_user), class: "text-dark mr-3" %>
+          フォロワー<%= link_to @end_user.followers.count, end_user_followers_path(@end_user), class: "text-dark" %>
         </li>
         <li>
-          フォロー<%= link_to @end_user.followings.count, end_user_followings_path(@end_user) %>
-          フォロワー<%= link_to @end_user.followers.count, end_user_followers_path(@end_user) %>
+          <%= @end_user.introduction %>
         </li>
       </ul>
     </div>
@@ -37,7 +37,9 @@
         <% else %>
         <% end %>
         <li>
-          <%= link_to "メッセージ", messages_path %>
+          <%= link_to messages_path, class: "text-dark" do %>
+            <i class="fa-solid fa-envelope"></i>
+          <% end %>
         </li>
         <li>
           <% if current_end_user != @end_user %>

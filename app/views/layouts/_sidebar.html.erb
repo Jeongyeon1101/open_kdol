@@ -1,23 +1,51 @@
 <ul class="list-unstyled">
   <li>
-    <%= link_to "ホーム", timeline_index_path %>
+    <h4 class="mt-5">
+      <%= link_to timeline_index_path, class: "text-dark" do %>
+        <i class="fa-solid fa-house mr-3"></i>ホーム
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "プロフィール", end_user_path(current_end_user.id) %>
+    <h4 class="mt-5">
+      <%= link_to end_user_path(current_end_user.id), class: "text-dark" do %>
+        <i class="fa-solid fa-user mr-3"></i>プロフィール
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "通知", notifications_path %>
+    <h4 class="mt-5">
+      <%= link_to notifications_path, class: "text-dark" do %>
+        <i class="fa-solid fa-bell mr-3"></i>通知
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "イベントカレンダー", events_path %>
+    <h4 class="mt-5">
+      <%= link_to new_post_content_path, class: "text-dark" do %>
+        <i class="fa-solid fa-square-plus mr-3"></i>投稿する
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "会員ログアウト", destroy_end_user_session_path, method: :delete %>
+    <h4 class="mt-5">
+      <%= link_to events_path, class: "text-dark" do %>
+        <i class="fa-solid fa-calendar mr-3"></i>イベントカレンダー
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "退会する", end_users_confirm_path %>
+    <h4 class="mt-5">
+      <%= link_to destroy_end_user_session_path, method: :delete, class: "text-dark" do %>
+        <i class="fa-solid fa-right-from-bracket mr-3"></i>ログアウト
+      <% end %>
+    </h4>
   </li>
   <li>
-    <%= link_to "投稿する", new_post_content_path %>
+    <h4 class="mt-5">
+      <%= link_to end_users_confirm_path, class: "text-dark" do %>
+        <i class="fa-regular fa-circle-xmark mr-3"></i>退会する
+      <% end %>
+    </h4>
   </li>
 </ul>
