@@ -1,15 +1,33 @@
-<h1>投稿一覧</h1>
-
-<% @post_contents.each do |post_content| %>
-  <%= link_to end_user_path(post_content.end_user.id) do %>
-    <%= image_tag post_content.end_user.get_profile_image(100,100) %><br>
-    <%= post_content.end_user.name %><br>
-  <% end %>
-  <%= link_to post_content_path(post_content.id) do %>
-    <%= post_content.text %><br>
-    <% if post_content.image.attached? %>
-      <%= image_tag post_content.get_image(200,200) %><br>
-    <% else %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3 pr-5 border-right">
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <div class="col-lg-6 ml-5">
+      <div class="row mt-5">
+        <h2>投稿一覧</h2>
+      </div>
+    <% @post_contents.each do |post_content| %>
+      <div class="row mt-5">
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to end_user_path(post_content.end_user.id), class: "text-dark" do %>
+              <%= image_tag post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
+              <%= post_content.end_user.name %><br>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to post_content_path(post_content.id), class: "text-dark" do %>
+              <%= post_content.text %><br>
+              <% if post_content.image.attached? %>
+                <%= image_tag post_content.get_image(200,200) %><br>
+              <% else %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     <% end %>
-  <% end %>
-<% end %>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@
     <div class="col-lg-3 pr-5 border-right">
       <%= render 'layouts/sidebar' %>
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-5 mx-auto">
       <ul class="list-unstyled">
         <li>
           <h5><%= @end_user.name %></h5>
@@ -25,7 +25,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 float-right">
       <ul class="list-unstyled">
         <% if @end_user == current_end_user %>
         <li>

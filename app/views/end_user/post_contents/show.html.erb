@@ -10,7 +10,7 @@
       <div class="row mt-5">
         <ul class="list-unstyled">
           <li>
-            <%= image_tag @post_content.end_user.get_profile_image(50,50) %>
+            <%= image_tag @post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
             <%= @post_content.end_user.name %>
           </li>
         </ul>
@@ -48,15 +48,17 @@
         <ul class="list-unstyled">
         <% @post_content.comments.each do |comment| %>
           <li>
-            <%= image_tag comment.end_user.get_profile_image(50,50) %>
+            <%= image_tag comment.end_user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px; object-fit:cover;" %>
             <%= comment.end_user.name %>
           </li>
           <li>
-            <%= link_to "削除", post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？" %>
-            <%= link_to "編集", edit_post_content_comment_path(comment.post_content, comment) %>
-          </li>
-          <li>
             <%= comment.comment %>
+            <%= link_to post_content_comment_path(comment.post_content, comment), method: :delete, "data-confirm" => "コメントを削除します。よろしいですか？", class: "text-dark" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+            <%= link_to edit_post_content_comment_path(comment.post_content, comment), class: "text-dark" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
           </li>
         <% end %>
         </ul>
