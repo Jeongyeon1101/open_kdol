@@ -33,24 +33,28 @@
         </li>
       </ul>
       <% elsif end_user_signed_in? %>
-      <ul class="list-unstyled border-bottom p-3">
-        <li>
-          <%= link_to "会員新規登録", new_end_user_registration_path, class: "btn btn-success mt-3" %>
-          <%= link_to "会員ログイン", new_end_user_session_path, class: "btn btn-primary mt-3 ml-3" %>
-        </li>
-        <li class="float-right">
-          <%= form_with url: post_contents_path, method: :get do |f| %>
-            <%= f.text_field :search_post_contents, placeholder:"Search" %>
-            <%= f.submit "投稿を検索", class: "btn btn-outline-success"  %>
-          <% end %>
-        </li>
-        <li class="float-right mr-5">
-          <%= form_with url: end_users_path, method: :get do |f| %>
-            <%= f.text_field :search_end_users, placeholder:"Search" %>
-            <%= f.submit "ユーザを検索", class: "btn btn-outline-primary" %>
-          <% end %>
-        </li>
-      </ul>
+      <nav class="navbar navbar-expand-lg border-bottom p-3">
+        <ul class="navbar-nav list-unstyled">
+          <li class="nav-item">
+            <%= link_to "会員新規登録", new_end_user_registration_path, class: "btn btn-success" %>
+            <%= link_to "会員ログイン", new_end_user_session_path, class: "btn btn-primary ml-3" %>
+          </li class="nav-item">
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="float-right">
+            <%= form_with url: post_contents_path, method: :get do |f| %>
+              <%= f.text_field :search_post_contents, placeholder:"Search" %>
+              <%= f.submit "投稿を検索", class: "btn btn-outline-success"  %>
+            <% end %>
+          </li class="nav-item">
+          <li class="float-right">
+            <%= form_with url: end_users_path, method: :get do |f| %>
+              <%= f.text_field :search_end_users, placeholder:"Search" %>
+              <%= f.submit "ユーザを検索", class: "btn btn-outline-primary" %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
       <% else %>
       <ul class="list-unstyled border-bottom p-3">
         <li>

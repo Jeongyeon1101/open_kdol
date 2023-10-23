@@ -7,50 +7,50 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class="col-lg-9 mx-auto">
-      <div class="row mt-3">
-        <h1>カレンダー</h1>
-      </div>
-      <div class="row mt-3">
-        <h3>今後の予定一覧</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>日程</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @events.each do |event| %>
+      <h1>カレンダー</h1>
+      <h3>今後の予定一覧</h3>
+      <div class="row">
+        <div class="col-6">
+          <table>
+            <thead>
               <tr>
-                <td><%= link_to event.title , event %></td>
-                <td><%= event.start_time.strftime("%m-%d") %></td>
+                <th>タイトル</th>
+                <th>日程</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @events.each do |event| %>
+                <tr>
+                  <td><%= link_to event.title , event %></td>
+                  <td><%= event.start_time.strftime("%m-%d") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-6">
+          <%= form_with(model: @event, local: true) do |form| %>
+            <ul class="list-unstyled">
+              <li class="title">
+                <label class="form-tag">タイトル</label>
+                <%= form.text_field :title %>
+              </li>
+              <li class="content">
+                <label class="form-tag">内容</label>
+                <%= form.text_field :content %>
+              </li>
+              <li class="time">
+                <label class="form-tag">時間</label>
+                <%= form.datetime_select :start_time %>
+              </li>
+              <li class="submit">
+                <%= form.submit "イベントに追加", class: "btn btn btn-primary" %>
+              </li>
+             </ul>
+          <% end %>
+        </div>
       </div>
-      <div class="row mt-3">
-      <%= form_with(model: @event, local: true) do |form| %>
-        <ul class="list-unstyled">
-          <li class="title">
-            <label class="form-tag">タイトル</label>
-            <%= form.text_field :title %>
-          </li>
-          <li class="content">
-            <label class="form-tag">内容</label>
-            <%= form.text_field :content %>
-          </li>
-          <li class="time">
-            <label class="form-tag">時間</label>
-            <%= form.datetime_select :start_time %>
-          </li>
-          <li class="submit">
-            <%= form.submit "イベントに追加", class: "btn btn btn-primary" %>
-          </li>
-         </ul>
-      <% end %>
-      </div>
-      <div class="row mt-3 mx-auto">
+      <div class="row mt-3 px-auto">
       <%= month_calendar events: @events do |date, events| %>
         <%= date.day %>
 
