@@ -1,8 +1,22 @@
-<h1>管理者トップページ</h1>
-
-<% @end_users.each do |end_user| %>
-  <%= link_to admin_end_user_path(end_user.id) do %>
-    <%= image_tag end_user.get_profile_image(50,50) %>
-    <%= end_user.name %><br>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="row mt-5">
+        <h2>管理者トップページ</h2>
+      </div>
+    <% @end_users.each do |end_user| %>
+      <div class="row mt-3">
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to admin_end_user_path(end_user.id) do %>
+              <%= image_tag end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
+              <%= end_user.name %><br>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

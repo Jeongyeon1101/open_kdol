@@ -18,20 +18,25 @@
         <% if request.fullpath.include? "/admin" %>
         <% else %>
         <% end %>
-      <ul class="list-unstyled border-bottom p-3">
-        <li>
-          <%= form_with url: admin_root_path, method: :get do |f| %>
-            <%= f.text_field :search_end_users, placeholder:"Search" %>
-            <%= f.submit "ユーザを検索", class: "btn btn-outline-primary" %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "会員一覧", admin_root_path, class: "btn btn-info" %>
-        </li>
-        <li>
-          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-secondary" %>
-        </li>
-      </ul>
+      <nav class="navbar navbar-expand-lg border-bottom p-3">
+        <ul class="navbar-nav list-unstyled">
+          <li class="nav-item">
+            <%= link_to "会員一覧", admin_root_path, class: "btn btn-info" %>
+          </li>
+        </ul>
+        <ul class="navbar-nav list-unstyled">
+          <li class="nav-item">
+            <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-secondary ml-3" %>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="float-right">
+             <%= form_with url: admin_root_path, method: :get do |f| %>
+                <%= f.text_field :search_end_users, placeholder:"Search" %>
+                <%= f.submit "ユーザを検索", class: "btn btn-outline-primary" %>
+             <% end %>
+          </li>
+        </ul>
       <% elsif end_user_signed_in? %>
       <nav class="navbar navbar-expand-lg border-bottom p-3">
         <ul class="navbar-nav list-unstyled">

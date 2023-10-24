@@ -1,14 +1,38 @@
-<h1>管理者会員詳細</h1>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-6">
+      <div class="row mt-5">
+        <h2>管理者会員詳細</h2>
+      </div>
+      <div class="row mt-5">
+        <ul class="list-unstyled">
+          <li>
+            <%= image_tag @end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
+            <%= @end_user.name %>
+          </li>
+          <li>
+            会員ID <%= @end_user.id %>
+          </li>
+          <li>
+            メールアドレス <%= @end_user.email %>
+          </li>
+          <li>
+            会員ステータス
+            <% if @end_user.is_active %>
+              有効
+            <% else %>
+              退会
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: "btn btn-lg btn-success" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= image_tag @end_user.get_profile_image(100,100) %>
-<%= @end_user.name %><br>
-会員ID <%= @end_user.id %><br>
-メールアドレス <%= @end_user.email %><br>
-会員ステータス
-<% if @end_user.is_active %>
-  有効
-<% else %>
-  退会
-<% end %><br>
 
-<%= link_to "編集する", edit_admin_end_user_path(@end_user) %>
+
+
