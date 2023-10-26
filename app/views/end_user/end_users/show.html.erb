@@ -53,5 +53,34 @@
   </div>
   <div class="row mt-3 col-sm-4 mx-auto">
     <%= link_to "いいね", likes_end_user_path(@end_user) %>
+
+    <div class="row mt-5">
+      <!-- タブとコンテンツの基本構造 -->
+      <div class="tabs">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#section1">セクション1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#section2">セクション2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#section3">セクション3</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="section1" class="tab-pane fade show active">
+            <p>セクション1のコンテンツが表示されます。</p>
+          </div>
+          <div id="section2" class="tab-pane fade">
+            <p>セクション2のコンテンツが表示されます。</p>
+          </div>
+          <div id="section3" class="tab-pane fade">
+            <p>セクション3のコンテンツが表示されます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
