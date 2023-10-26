@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   scope module: :end_user do
    root to: 'homes#top'
+   get 'about' => 'homes#about', as: "about"
    get 'end_users/confirm'
    patch 'end_users/withdraw'
    resources :end_users, only: [:index, :show, :edit, :update, :destroy] do

@@ -18,7 +18,7 @@
         <%= link_to end_user_path(post_content.end_user.id) do %>
           <ul class="list-unstyled">
             <li>
-              <%= image_tag post_content.end_user.get_profile_image(50,50) %>
+              <%= image_tag post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
               <%= post_content.end_user.name %>
             </li>
           </ul>

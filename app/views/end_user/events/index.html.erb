@@ -21,7 +21,7 @@
             <tbody>
               <% @events.each do |event| %>
                 <tr>
-                  <td><%= link_to event.title , event %></td>
+                  <td><%= link_to event.title , event, class: "text-dark" %></td>
                   <td><%= event.start_time.strftime("%m-%d") %></td>
                 </tr>
               <% end %>
@@ -56,7 +56,7 @@
 
         <% events.each do |event| %>
           <div>
-            <%= link_to event.title, event %>
+            <%= link_to event.title, event, class: "text-dark" %>
           </div>
         <% end %>
       <% end %>

@@ -34,13 +34,13 @@
         <li>
           <%= @random_message.message %>
         </li>
-        <% else %>
-        <% end %>
         <li>
           <%= link_to messages_path, class: "text-dark" do %>
-            <i class="fa-solid fa-envelope"></i>
+            <i class="fa-solid fa-envelope fa-2x"></i>
           <% end %>
         </li>
+        <% else %>
+        <% end %>
         <li>
           <% if current_end_user != @end_user %>
             <%= render 'end_user/follows/btn', end_user: @end_user, options: { class: ""} %>
