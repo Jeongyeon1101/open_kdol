@@ -5,25 +5,28 @@
     </div>
     <div class="col-lg-6">
       <div class="row mt-5">
-        <h2>投稿詳細</h2>
-      </div>
-      <div class="row mt-5">
         <ul class="list-unstyled">
           <li>
-            <%= image_tag @post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
-            <%= @post_content.end_user.name %>
+            <%= link_to end_user_path(@post_content.end_user.id), class: "text-dark" do %>
+              <%= image_tag @post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
+              <%= @post_content.end_user.name %>
+            <% end %>
           </li>
         </ul>
       </div>
       <div class="row mt-3">
         <ul class="list-unstyled">
           <li>
-            <%= link_to "削除する", post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？" %>
-            <%= link_to "編集する", edit_post_content_path(@post_content) %><br>
+            <%= link_to post_content_path(@post_content), method: :delete, "data-confirm" => "投稿を削除します。よろしいですか？", class: "text-dark" do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+            <%= link_to edit_post_content_path(@post_content), class: "text-dark" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
           </li>
         </ul>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3" style="margin-bottom: 20px;">
         <%= @post_content.text %><br>
         <% if @post_content.image.attached? %>
           <%= image_tag @post_content.get_image(200,200) %><br>
@@ -31,17 +34,17 @@
         <% end %>
       </div>
       <% if @post_content.liked_by?(current_end_user) %>
-      <div class="row mt-3">
-        <%= link_to post_content_likes_path(@post_content), method: :delete do %>
+      <!--<div class="row mt-3">-->
+        <%= link_to post_content_likes_path(@post_content), style: "margin-left: -15px;", method: :delete, class: "text-dark" do %>
           ♥<%= @post_content.likes.count %>いいね
         <% end %>
       <% else %>
-        <%= link_to post_content_likes_path(@post_content), method: :post do %>
+        <%= link_to post_content_likes_path(@post_content), style: "margin-left: -15px;", method: :post, class: "text-dark" do %>
           ♡<%= @post_content.likes.count %>いいね
         <% end %>
-      </div>
+      <!--</div>-->
       <% end %>
-        <div class="ml-5">
+        <div style="margin-left: -15px;">
         <%= @post_content.comments.count %>件のコメント<br>
         </div>
       <div class="row mt-5">

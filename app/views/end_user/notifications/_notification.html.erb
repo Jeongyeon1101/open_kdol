@@ -15,6 +15,7 @@
         <% when 'comment' then %>
           <% if notification.post_content.end_user_id == visited.id %>
             <%= link_to "あなたの投稿", notification.post_content, class: "text-dark" %>
+            <%= "にコメントしました" %><br>
           <% else %>
             <span>
               <%= link_to post_content_path(notification.post_content) do %>
@@ -24,8 +25,8 @@
               <% end %>
             </span>
           <% end %>
-          <%= Comment.find_by(id: notification.comment_id)&.comment %>
-          <%= time_ago_in_words(notification.created_at).upcase %>
+          <%= Comment.find_by(id: notification.comment_id)&.comment %>・
+          <%= time_ago_in_words(notification.created_at).upcase %>前
       <% end %>
     <% end %>
   </span>

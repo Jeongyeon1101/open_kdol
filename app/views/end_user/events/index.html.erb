@@ -56,7 +56,9 @@
 
         <% events.each do |event| %>
           <div>
-            <%= link_to event.title, event, class: "text-dark" %>
+            <%= link_to event, class: "text-dark" do %>
+              <i class="fa-solid fa-calendar-check"></i>
+            <% end %>
           </div>
         <% end %>
       <% end %>
