@@ -20,6 +20,9 @@
         <% end %>
       <nav class="navbar navbar-expand-lg border-bottom p-3">
         <ul class="navbar-nav list-unstyled">
+          <li>
+            <a class="navbar-brand p-3" href="/"><%= image_tag 'open_kdol_logo.jpg', style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %></a>
+          </li>
           <li class="nav-item">
             <%= link_to "会員一覧", admin_root_path, class: "btn btn-info" %>
           </li>
@@ -63,6 +66,9 @@
       <% else %>
       <nav class="navbar navbar-expand-lg border-bottom p-3">
         <ul class="navbar-nav list-unstyled">
+          <li class="nav-item">
+            <a class="navbar-brand p-3" href="/"><%= image_tag 'open_kdol_logo.jpg', style: "border-radius: 50%; width: 50px; height: 50px; object-fit:cover;" %></a>
+          </li>
           <li class="nav-item">
             <%= link_to "会員新規登録", new_end_user_registration_path, class: "btn btn-success" %>
             <%= link_to "会員ログイン", new_end_user_session_path, class: "btn btn-primary ml-3 mr-3" %>

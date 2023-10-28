@@ -1,0 +1,28 @@
+<% if like_post_contents.empty? %>
+  <div class="row mt-3">
+    <h3>いいねした投稿はありません</h3>
+    <p>気に入ったユーザーの投稿をいいねしてみましょう</p>
+  </div>
+<% else %>
+  <% like_post_contents.each do |post_content| %>
+  <div class="row mt-5">
+    <%= link_to end_user_path(post_content.end_user.id) do %>
+      <ul class="list-unstyled">
+        <li>
+          <%= image_tag post_content.end_user.get_profile_image, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+          <%= post_content.end_user.name %>
+        </li>
+      </ul>
+  </div>
+    <% end %>
+    <%= link_to post_content_path(post_content.id) do %>
+  <div class="row mt-5">
+      <%= post_content.text %>
+      <% if post_content.image.attached? %>
+        <%= image_tag post_content.get_image(200,200) %>
+      <% else %>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>

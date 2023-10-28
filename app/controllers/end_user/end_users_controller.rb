@@ -18,6 +18,9 @@ class EndUser::EndUsersController < ApplicationController
     @random_message = Message.offset( rand(Message.count) ).first
     #登録したmessageからランダムに一件取得する
     @end_user = EndUser.find(params[:id])
+    @post_contents = @end_user.post_contents
+    likes = Like.where(end_user_id: @end_user.id).pluck(:post_content_id)
+    @like_post_contents = PostContent.find(likes)
   end
 
   def edit
