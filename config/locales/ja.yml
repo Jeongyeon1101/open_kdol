@@ -81,7 +81,10 @@ ja:
       - 10月
       - 11月
       - 12月
-
+    order:
+      - :year
+      - :month
+      - :day
   time:
     am: 午前
     formats:
@@ -89,4 +92,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
