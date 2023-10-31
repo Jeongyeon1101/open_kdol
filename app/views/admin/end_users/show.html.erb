@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row mt-3">
-    <div class="col-lg-6">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
       <div class="row mt-5">
-        <h2>管理者会員詳細</h2>
+        <h2><%= @end_user.name %>の会員情報</h2>
       </div>
       <div class="row mt-5">
         <ul class="list-unstyled">
@@ -10,13 +11,13 @@
             <%= image_tag @end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
             <%= @end_user.name %>
           </li>
-          <li>
+          <li class="mt-3">
             会員ID <%= @end_user.id %>
           </li>
-          <li>
+          <li class="mt-3">
             メールアドレス <%= @end_user.email %>
           </li>
-          <li>
+          <li class="mt-3 mb-3">
             会員ステータス
             <% if @end_user.is_active %>
               有効
@@ -25,11 +26,12 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: "btn btn-lg btn-success" %>
+            <%= link_to "編集", edit_admin_end_user_path(@end_user), class: "btn btn-success" %>
           </li>
         </ul>
       </div>
     </div>
+    <div class="col-lg-2"></div>
   </div>
 </div>
 
