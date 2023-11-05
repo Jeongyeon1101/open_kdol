@@ -51,8 +51,10 @@
         <ul class="list-unstyled">
         <% @post_content.comments.each do |comment| %>
           <li>
-            <%= image_tag comment.end_user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px; object-fit:cover;" %>
-            <%= comment.end_user.name %>
+            <%= link_to end_user_path(comment.end_user.id), class: "text-dark" do %>
+              <%= image_tag comment.end_user.get_profile_image, style: "border-radius: 50%; width: 50px; height: 50px; object-fit:cover;" %>
+              <%= comment.end_user.name %>
+            <% end %>
           </li>
           <li>
             <%= comment.comment %>

@@ -4,15 +4,15 @@
       <%= render 'layouts/sidebar' %>
     </div>
     <div class="col-lg-6">
-    <% end_users.each do |end_user| %>
+    <% @end_users.each do |end_user| %>
       <div class="row mt-5">
       <%= link_to end_user_path(end_user.id) do %>
         <ul class="list-unstyled">
-          <li>
-            <%= image_tag end_user.get_profile_image, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+          <li class="text-dark">
+            <%= image_tag end_user.get_profile_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
             <%= end_user.name %>
           </li>
-          <li>
+          <li class="text-dark">
             <%= end_user.introduction %>
           </li>
         </ul>

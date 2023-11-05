@@ -1,5 +1,6 @@
 class EndUser::EndUsersController < ApplicationController
   before_action :set_end_user, only: [:likes]
+  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
 
   def likes
     likes = Like.where(end_user_id: @end_user.id).pluck(:post_content_id)
@@ -49,5 +50,12 @@ class EndUser::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(:profile_image, :name, :introduction, :is_active)
+  end
+
+  def is_matching_login_end_user
+    end_user = EndUser.find(params[:id])
+    unless end_user.id == current_end_user.id
+      redirect_to post_contents_path
+    end
   end
 end

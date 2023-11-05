@@ -26,7 +26,7 @@ class EndUser::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      redirect_to events_path, notice: "編集が完了しました"
+      redirect_to event_path(@event), notice: "編集が完了しました"
     else
       render 'edit'
     end

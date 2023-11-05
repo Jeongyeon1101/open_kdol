@@ -35,4 +35,5 @@ class EndUser::CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment).merge(post_content_id: params[:post_content_id])
   end
+
 end

@@ -55,7 +55,7 @@
                     <%= link_to post_content_path(post_content.id), class: "text-dark" do %>
                       <%= post_content.text %><br>
                       <% if post_content.image.attached? %>
-                        <%= image_tag post_content.get_image, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %><br>
+                        <%= image_tag post_content.get_image, style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %><br>
                       <% else %>
                       <% end %>
                     <% end %>
