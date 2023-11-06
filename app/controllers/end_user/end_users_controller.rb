@@ -1,6 +1,6 @@
 class EndUser::EndUsersController < ApplicationController
   before_action :set_end_user, only: [:likes]
-  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
+  before_action :is_matching_login_end_user, only: [:edit, :update]
 
   def likes
     likes = Like.where(end_user_id: @end_user.id).pluck(:post_content_id)
@@ -16,8 +16,8 @@ class EndUser::EndUsersController < ApplicationController
   end
 
   def show
-    @random_message = Message.offset( rand(Message.count) ).first
-    #登録したmessageからランダムに一件取得する
+    @random_message = current_end_user.messages.sample
+    #current_end_userが登録したmessagesからランダムに一件取得する
     @end_user = EndUser.find(params[:id])
     @post_contents = @end_user.post_contents
     likes = Like.where(end_user_id: @end_user.id).pluck(:post_content_id)

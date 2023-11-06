@@ -14,6 +14,7 @@
           </li>
         </ul>
       </div>
+      <% if current_end_user == @end_user %>
       <div class="row mt-3">
         <ul class="list-unstyled">
           <li>
@@ -26,12 +27,17 @@
           </li>
         </ul>
       </div>
+      <% else %>
+      <% end %>
       <div class="row mt-3" style="margin-bottom: 20px;">
         <%= @post_content.text %><br>
         <% if @post_content.image.attached? %>
-          <%= image_tag @post_content.get_image(200,200) %><br>
+          <%= image_tag @post_content.get_image(200,200) %>
         <% else %>
         <% end %>
+      </div>
+      <div class="row mt-3">
+        <%= l @post_content.created_at %>
       </div>
       <% if @post_content.liked_by?(current_end_user) %>
       <!--<div class="row mt-3">-->
@@ -64,6 +70,9 @@
             <%= link_to edit_post_content_comment_path(comment.post_content, comment), class: "text-dark" do %>
               <i class="fa-solid fa-pen-to-square"></i>
             <% end %>
+          </li>
+          <li>
+            <%= l comment.created_at %>
           </li>
         <% end %>
         </ul>

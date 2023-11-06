@@ -19,7 +19,7 @@
           </li>
           <li>
             <strong>日時</strong>
-            <%= @event.start_time.strftime("%m-%d") %>
+            <%= @event.start_time.strftime("%m月%d日") %>
           </li>
           <li>
             <%= link_to '編集', edit_event_path(@event), class: "btn btn btn-success" %>
