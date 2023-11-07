@@ -8,7 +8,7 @@ class EndUser::PostContentsController < ApplicationController
       @post_contents = PostContent.where("text LIKE ? ", '%' + params[:search_post_contents] + '%')
       # 投稿orユーザ検索
     else
-      @post_contents = PostContent.all
+      @post_contents = PostContent.all.order(created_at: :desc)
     end
   end
 
