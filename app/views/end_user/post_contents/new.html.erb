@@ -5,10 +5,22 @@
     </div>
     <div class="col-lg-6 ml-5">
       <div class="row mt-5">
-        <h2>投稿作成</h2>
+        <h2>投稿を作成</h2>
+      </div>
+      <div class="row mt-3">
+        <% if @post_content.errors.any? %>
+          <ul class="list-unstyled">
+            <li>
+              <%= @post_content.errors.count %>件のエラーが発生しました
+            </li>
+            <% @post_content.errors.full_messages.each do |message| %>
+              <li>⚠︎<%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     <%= form_with model: @post_content do |f| %>
-      <div class="row mt-5">
+      <div class="row mt-3">
         <ul class="list-unstyled">
           <li>
             <label for="post_text inputlg"></label>

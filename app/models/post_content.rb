@@ -1,4 +1,5 @@
 class PostContent< ApplicationRecord
+  validates :text, presence: true
   belongs_to :end_user
   has_one_attached :image
   has_many :comments, dependent: :destroy

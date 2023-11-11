@@ -15,8 +15,11 @@ class EndUser::PostContentsController < ApplicationController
   def create
     @post_content = PostContent.new(post_content_params)
     @post_content.end_user_id = current_end_user.id
-    @post_content.save!
-    redirect_to post_contents_path
+    if @post_content.save
+      redirect_to post_contents_path
+    else
+      render :new
+    end
   end
 
   def show
