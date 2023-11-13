@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_10_12_140201) do
   create_table "comments", force: :cascade do |t|
     t.integer "end_user_id", null: false
     t.integer "post_content_id", null: false
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2023_10_12_140201) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.text "message", default: "", null: false
+    t.text "message", null: false
     t.string "idol", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2023_10_12_140201) do
 
   create_table "post_contents", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.text "text", default: "", null: false
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
