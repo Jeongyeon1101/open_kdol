@@ -36,4 +36,12 @@ class EndUser::CommentsController < ApplicationController
     params.require(:comment).permit(:comment, :image).merge(post_content_id: params[:post_content_id])
   end
 
+  def is_matching_login_end_user
+    @comment = Comment.find(params[:id])
+    @end_user = @comment.end_user
+    unless @end_user.id == current_end_user.id
+      redirect_to post_contents_path
+    end
+  end
+
 end
