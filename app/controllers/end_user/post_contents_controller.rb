@@ -29,16 +29,19 @@ class EndUser::PostContentsController < ApplicationController
   end
 
   def edit
+    is_matching_login_end_user
     @post_content = PostContent.find(params[:id])
   end
 
   def update
-    post_content = PostContent.find(params[:id])
-    post_content.update(post_content_params)
-    redirect_to post_content_path(post_content.id)
+    is_matching_login_end_user
+    @post_content = PostContent.find(params[:id])
+    @post_content.update(post_content_params)
+    redirect_to post_content_path(@post_content.id)
   end
 
   def destroy
+    is_matching_login_end_user
     post_content = PostContent.find(params[:id])
     post_content.destroy
     redirect_to post_contents_path
@@ -48,5 +51,13 @@ class EndUser::PostContentsController < ApplicationController
 
   def post_content_params
     params.require(:post_content).permit(:text, :image)
+  end
+
+  def is_matching_login_end_user
+    @post_content = PostContent.find(params[:id])
+    @end_user = @post_content.end_user
+    unless @end_user.id == current_end_user.id
+      redirect_to post_contents_path
+    end
   end
 end
