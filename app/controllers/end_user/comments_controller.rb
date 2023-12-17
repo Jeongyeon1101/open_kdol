@@ -14,11 +14,13 @@ class EndUser::CommentsController < ApplicationController
   end
 
   def edit
+    is_matching_login_end_user
     @post_content = PostContent.find(params[:post_content_id])
     @comment = Comment.find(params[:id])
   end
 
   def update
+    is_matching_login_end_user
     @post_content = PostContent.find(params[:post_content_id])
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
@@ -26,6 +28,7 @@ class EndUser::CommentsController < ApplicationController
   end
 
   def destroy
+    is_matching_login_end_user
     Comment.find(params[:id]).destroy
     redirect_to post_content_path(params[:post_content_id])
   end
