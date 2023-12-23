@@ -67,3 +67,4 @@ gem "net-pop"
 gem "net-imap"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'jquery-rails'
