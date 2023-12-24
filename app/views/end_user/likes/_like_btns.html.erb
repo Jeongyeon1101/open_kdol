@@ -1,0 +1,10 @@
+<% if post_content.liked_by?(current_end_user) %>
+  <%= link_to post_content_likes_path(post_content), style: "margin-left: -15px;", method: :delete, class: "text-dark", remote: true do %>
+    ♥<%= post_content.likes.count %>いいね
+  <% end %>
+<% else %>
+  <%= link_to post_content_likes_path(post_content), style: "margin-left: -15px;", method: :post, class: "text-dark", remote: true do %>
+    ♡<%= post_content.likes.count %>いいね
+  <% end %>
+<!--</div>-->
+<% end %>

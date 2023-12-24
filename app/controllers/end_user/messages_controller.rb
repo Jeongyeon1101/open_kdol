@@ -1,4 +1,5 @@
 class EndUser::MessagesController < ApplicationController
+  before_action :authenticate_end_user!
   def index
     @message = Message.new
     @messages = current_end_user.messages.all

@@ -28,6 +28,8 @@
           <li>
             <%= l post_content.created_at %>
           </li>
+          <li>id="like_buttons_<%= post_content.id %>" %></li>
+　　　    <li><%= render "end_user/likes/like_btns", post_content: post_content %></li>
         </ul>
       </div>
     <% end %>

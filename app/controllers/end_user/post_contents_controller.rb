@@ -1,4 +1,5 @@
 class EndUser::PostContentsController < ApplicationController
+  before_action :authenticate_end_user!, only: [:new, :create, :edit, :update, :destroy]
   def new
     @post_content = PostContent.new
   end

@@ -1,5 +1,5 @@
 class EndUser::EventsController < ApplicationController
-
+  before_action :authenticate_end_user!
   def new
     @event = Event.new
   end

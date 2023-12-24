@@ -1,4 +1,5 @@
 class EndUser::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :set_end_user, only: [:likes]
   before_action :is_matching_login_end_user, only: [:edit, :update]
 
