@@ -17,8 +17,9 @@
       </div>
       <ul class="list-unstyled">
         <li>
-          フォロー<%= link_to @end_user.followings.count, end_user_followings_path(@end_user), class: "text-dark mr-3" %>
-          フォロワー<%= link_to @end_user.followers.count, end_user_followers_path(@end_user), class: "text-dark" %>
+          <div class = 'mypage-follow-counts-<%= @end_user.id %>'>
+            <%= render 'end_user/follows/follow_count', end_user: @end_user %>
+          </div>
         </li>
         <li>
           <%= @end_user.introduction %>
@@ -88,7 +89,9 @@
         <% end %>
         <li>
           <% if current_end_user != @end_user %>
-            <%= render 'end_user/follows/btn', end_user: @end_user, options: { class: ""} %>
+            <div class = 'mypage-follow-contents-<%= @end_user.id %>'>
+              <%= render 'end_user/follows/btn', end_user: @end_user %>
+            </div>
           <% else %>
             <%= link_to "プロフィールを編集する", edit_end_user_path(@end_user), class: "btn btn btn-primary" %>
           <% end %>

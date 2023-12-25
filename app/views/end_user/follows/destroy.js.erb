@@ -1,0 +1,2 @@
+$('.mypage-follow-contents-<%= @end_user.id %>').html("<%= j(render partial: 'end_user/follows/btn', locals: {end_user: @end_user}) %>")
+$('.mypage-follow-counts-<%= @end_user.id %>').html("<%= j(render partial: 'end_user/follows/follow_count', locals: {end_user: @end_user}) %>")

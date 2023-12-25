@@ -4,13 +4,13 @@ class EndUser::FollowsController < ApplicationController
     @end_user = EndUser.find(params[:end_user_id])
     current_end_user.follow(@end_user)
     @end_user.create_notification_follow!(current_end_user)
-    redirect_to request.referer
+    #redirect_to request.referer 非同期通信化の為リダイレクト先を削除
   end
 
   def destroy
-    end_user = EndUser.find(params[:end_user_id])
-    current_end_user.unfollow(end_user)
-    redirect_to  request.referer
+    @end_user = EndUser.find(params[:end_user_id])
+    current_end_user.unfollow(@end_user)
+    #redirect_to  request.referer 非同期通信化の為リダイレクト先を削除
   end
 
   def followings
