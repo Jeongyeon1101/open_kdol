@@ -45,8 +45,9 @@
       <div class="row mt-3">
         <%= l @post_content.created_at %>
       </div>
-      <li>id="like_buttons_<%= @post_content.id %>" %></li>
-　　　<li><%= render "end_user/likes/like_btns", post_content: @post_content %></li>
+      <ul class="list-unstyled">
+　　　  <li id="like_buttons_<%= @post_content.id %>"><%= render "end_user/likes/like_btns", post_content: @post_content %></li>
+      </ul>
         <div style="margin-left: -15px;">
         <%= @post_content.comments.count %>件のコメント<br>
         </div>
