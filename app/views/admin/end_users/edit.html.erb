@@ -7,7 +7,7 @@
       </div>
       <div class="row mt-5">
         <ul class="list-unstyled">
-          <%= form_with model: @end_user, url: admin_end_user_path(@end_user.id) do |f| %>
+          <%= form_with model: @end_user, id: "myForm", url: admin_end_user_path(@end_user.id) do |f| %>
           <li>
             会員ID <%= @end_user.id %>
           </li>
@@ -33,7 +33,7 @@
             <%= f.label :is_active_false, "退会" %>
           </li>
           <li>
-            <%= f.submit "保存", class: "btn btn-primary" %>
+            <%= f.submit "保存", class: "btn btn-primary"  %>
           </li>
           <% end %>
         </ul>
@@ -42,3 +42,25 @@
     <div class="col-lg-2"></div>
   </div>
 </div>
+<script>
+
+// ラジオボタンの要素を取得
+const radios = document.getElementsByName("end_user[is_active]")
+// フォームのIDを取得
+document.getElementById("myForm").addEventListener("submit", function(event) {
+          let selectedValue = ""
+          for (const radio of radios) {
+              if (radio.checked) {
+                  selectedValue = radio.value;
+                  break;
+              }
+          }
+          if(selectedValue === "true") { 
+            return
+          }
+          const confirmation = window.confirm("本当に送信しますか？");
+          if (!confirmation) {
+              event.preventDefault(); // 送信をキャンセル
+          }
+      });
+</script>
