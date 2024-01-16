@@ -19,8 +19,13 @@
 - 同じ推しを持つファンと交流・情報交換したい時​
 - 自分の好きな推しの画像や、公開された情報について投稿したい時
   (アイドルの名前・画像等は全て架空のものとします)
+### 管理者ログイン情報
+- 管理者ログインページ　https://open-kdol-site.com/admin/sign_in
+- メールアドレス: twice1101oncemegumi@gmail.com
+- パスワード: Jeongyeon1101
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- 詳細設計書
+https://docs.google.com/spreadsheets/d/17Z7ZAEm6x_H518Nm6izGiMN2PA_aeCNijh8I2L8oKBw/edit?usp=sharing
 - 実装機能リスト
 https://docs.google.com/spreadsheets/d/1VNrwX9JZJ835cL6voS3HOFt2zi0hhzvFg2u0bY3Kc2k/edit?usp=sharing
 ​
